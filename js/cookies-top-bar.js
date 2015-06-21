@@ -1,5 +1,6 @@
 $(function() {
 	var cname = cname || undefined;
+
 	function cookiesTopBar(cname) {
 		cname = decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" +
 		 encodeURIComponent(cname).replace(/[\-\.\+\*]/g, "\\$&") +
@@ -17,8 +18,10 @@ $(function() {
 			}
 		}
  	}
-	$("#cookie-click").on("click", function() {
+
+	$("#cookie-click").on("click", function(e) {
 		document.cookie = "acceptcookies=yes";
+		e.preventDefault();
 
 		function swing() {
 			$( ".center" ).fadeOut( "fast" );
@@ -28,5 +31,7 @@ $(function() {
 
 		});
 	});
+
 	cookiesTopBar("acceptcookies");
+
 });
